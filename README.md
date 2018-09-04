@@ -1,4 +1,4 @@
-# ece309-fall18-unityid
+# ece309-fall18-jsdearmi
 Repository for students to fork and modify.
 Spencer Dearmin
 ECE309-001
