@@ -10,7 +10,7 @@ private:
   int arraytail;
   int listhead;
   int listtail;
-  char** List; //array pointing to char* to string
+  const char** List; //array pointing to const char* to string
   int IsEmpty(); // returns 1 if the list is empty
   void ShiftListLeft(); //used for when we remove the head
   void BiggerArray(); //if the list outgrows the array add 10 to array
@@ -18,7 +18,7 @@ private:
 
 
 public:
-  void push_back(char*);
+  void push_back(const char*);
   void get(int);
   void length();
   void remove_front();
@@ -28,7 +28,7 @@ public:
 
 StringArrayList::StringArrayList(){ //constructor
     arraysize = 10;
-    List = (char**)malloc(sizeof(char*)*arraysize);
+    List = (const char**)malloc(sizeof(const char*)*arraysize);
     arraytail = arraysize - 1;
     listhead = listtail = -1;
 
@@ -38,7 +38,7 @@ StringArrayList::~StringArrayList(){ // destructor
   free(List);
 }
 
-void StringArrayList::push_back(char* thing){
+void StringArrayList::push_back(const char* thing){
   if (IsEmpty() == 1){ //list is empty
     listhead = 0;
     listtail = 0;
@@ -76,10 +76,10 @@ void StringArrayList::length(){
 }
 
 void StringArrayList::BiggerArray(){
-  char** tmplist;
+  const char** tmplist;
   tmplist = List;
   arraysize += 10;
-  List = (char**)malloc(sizeof(char*)*arraysize);
+  List = (const char**)malloc(sizeof(const char*)*arraysize);
   List = tmplist;
   arraytail = arraysize - 1;
 
@@ -87,7 +87,7 @@ void StringArrayList::BiggerArray(){
 
 void StringArrayList::ShiftListLeft(){
   int i=0;
-  char* tempthing;
+  const char* tempthing;
   for(i=0;i<(listtail);i++){
     tempthing=List[i+1];
     List[i] = tempthing;
@@ -106,7 +106,7 @@ void StringArrayList::remove_front(){
     printf("List is only had 1 item and is now empty\n");
   }
   else{
-  char* tmp = List[listhead];
+  const char* tmp = List[listhead];
   List[listhead] = NULL;
   ShiftListLeft();
   printf("%s has been removed\n", tmp);
@@ -116,6 +116,39 @@ void StringArrayList::remove_front(){
 
 int main(){
 
+StringArrayList l;
+char a[10] = "milk";
+l.get(0);
+l.push_back("10");
+l.push_back("20");
+l.push_back("30");
+l.push_back("40");
+l.push_back("50");
+l.push_back("60");
+l.push_back("70");
+l.push_back("80");
+l.push_back("90");
+l.push_back("100");
+l.push_back("110");
+l.push_back("120");
+l.push_back("130");
+l.push_back("140");
+l.push_back("150");
+l.push_back("160");
+l.push_back("170");
+l.push_back("180");
+l.push_back("190");
+l.push_back("200");
+l.push_back("210");
+l.push_back(a);
+l.remove_front();
+l.length();
+l.get(0);
+l.get(20);
+l.get(19);
+l.remove_front();
+l.length();
+printf("working");
 /*
 StringArrayList l;
 char a[10] = "10";
@@ -139,7 +172,7 @@ char s[10] = "190";
 char t[10] = "200";
 char u[10] = "210";
 char v[10] = "220";
-
+*
 l.push_back(a);
 l.push_back(b);
 l.push_back(c);
