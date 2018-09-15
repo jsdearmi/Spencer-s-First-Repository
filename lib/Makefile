@@ -1,6 +1,6 @@
 
 # add files you create here
-OBJ = example.o hw2linkedlist.o
+OBJ = example.o hw2linkedlist.o HW3arraylist.o HW3intlist.o
 
 all: libece309.a
 
