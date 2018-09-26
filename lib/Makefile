@@ -1,6 +1,6 @@
 
 # add files you create here
-OBJ = example.o hw2linkedlist.o HW3arraylist.o HW3intlist.o
+OBJ = example.o hw2linkedlist.o HW3arraylist.o HW3intlist.o PList.o
 
 all: libece309.a
 
@@ -11,7 +11,7 @@ clean:
 	rm -f *~ libece309.a $(OBJ)
 
 libece309.a: $(OBJ)
-	$(AR) -r $@ $(OBJ) 
+	$(AR) -r $@ $(OBJ)
 
 %.o:%.cpp
 	$(CXX) -c -o $@ -I . -I ../include $< -Wall -Werror
