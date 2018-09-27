@@ -1,106 +1,23 @@
-// PList header file
-// contains objects declarations
-// Linked List
-// List should support strings integers and double values
+#include <stdio.h>
+#include "PList.h"
 
-class Item{
-public:
-  virtual void print(){printf("Base\n");};
-};
+    void Item::print(){printf("Base\n");}
 
-  class sItem: public Item{
-  public:
-    const char* str;
-    sItem(const char* astr = ""){ // item with string constructor
+    sItem::sItem(const char* astr){ // item with string constructor
       str = astr;
     }
-    void print() {printf("%s\n",str); }
-  };
-  class iItem: public Item{
-  public:
-    int x;
-    iItem(int ax = 0){ // item with int constructor
+    void sItem::print() {printf("%s\n",str); }
+
+    iItem::iItem(int ax){ // item with int constructor
       x = ax;
     }
-    void print() {printf("%d\n",x); }
-  };
-  class dItem: public Item{
-  public:
-    double d;
-    dItem(double ad = 0.0){ // item with double constructor
+    void iItem::print() {printf("%d\n",x); }
+
+    dItem::dItem(double ad){ // item with double constructor
       d = ad;
     }
-    void print() {printf("%lf\n",d);}
-  };
+    void dItem::print() {printf("%lf\n",d);}
 
-
-class List {
-private:
-
-// ListNode represents each
-// node of the list
-  class ListNode {
-  public:
-    Item* item; // data in the list
-    ListNode *next;
-  public:
-    ListNode(Item* a, ListNode *n=NULL)
-    {
-      item = a;
-      next=n; // automatically serves as a list tail
-    }
-
-    ListNode* getNext()
-    {
-      return next;
-    }
-    void setNext(ListNode *n)
-    {
-      next = n;
-    }
-    Item getItem()
-    {
-      return *item;
-    }
-  };
-
-  // add head and tail pointer
-  ListNode *head;
-  ListNode *tail;
-
-public: //contains iterator class
-
-  class iterator {
-  private:
-    ListNode *node;
-
-  public:
-    iterator(ListNode *n=NULL) { node = n; }
-    Item getItem() { return node->getItem(); }
-    void increment() { node = node->next; }
-    bool end() { return node==NULL; }
-
-    friend class List;
-  };
-
-public:
-  List();
-  void append(Item* a);
-  bool remove(Item &a);
-  bool empty();
-  void get(int x);
-
-
-  iterator begin()
-  {
-    return iterator(head);
-  }
-
-  void removeAfter(iterator it); // pseudocode in zyBook 2.4
-  void insertAfter(iterator it, Item item);
-
-
-};
 
 List::List()
 {
@@ -111,7 +28,7 @@ List::List()
 
 void List::append(Item* a)
 {
-  ListNode *node = new ListNode(a);
+ ListNode *node = new ListNode(a);
   if (head == NULL)
     {
       // list is empty
