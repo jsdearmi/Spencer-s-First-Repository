@@ -1,6 +1,6 @@
 
 # add files you create here
-OBJ = example.o hw2linkedlist.o HW3arraylist.o HW3intlist.o PList.o
+OBJ = example.o hw2linkedlist.o HW3arraylist.o HW3intlist.o PListTester.o
 
 all: libece309.a
 
